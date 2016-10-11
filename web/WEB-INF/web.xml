@@ -3,4 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>controlServlet</servlet-name>
+        <servlet-class>hit.weibo.servlet.ControlServlet</servlet-class>
+        <init-param>
+            <param-name>AdminLogin</param-name>
+            <param-value>hit.weibo.action.LoginAction</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>controlServlet</servlet-name>
+        <url-pattern>*.action</url-pattern>
+    </servlet-mapping>
 </web-app>
