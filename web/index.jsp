@@ -11,6 +11,13 @@
     <title>Login</title>
   </head>
   <body>
+  <%
+      out.print("TRY");
+      if (session.getAttribute("loginFailed") != null) {
+      session.setAttribute("loginFailed", null);
+      out.print("Login failed.");
+  }
+  %>
     <form action="/AdminLogin.action" method="post">
         Username: <input type="text" name="username"/><br/>
         Password: <input type="password" name="password"/><br/>

@@ -69,3 +69,4 @@ Thumbs.db
 *.obj
 
 out/
+res/db-connection.properities

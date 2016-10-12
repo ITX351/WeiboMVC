@@ -5,7 +5,7 @@ package hit.weibo.action;
  */
 public class ActionFactory {
     public static Action getAction(String actionName) {
-        if ("hit.weibo.action.LoginAction".equals(actionName)) {
+        if ("AdminLogin".equals(actionName)) {
             return new LoginAction();
         }
         return null;

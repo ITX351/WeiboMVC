@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ControlServlet extends HttpServlet {
 
@@ -24,19 +25,27 @@ public class ControlServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         String pathName = request.getServletPath();
+        System.out.println("pathName: " + pathName);
 
         int index = pathName.indexOf(".");
         String ActionName = pathName.substring(1, index);
+        System.out.println("ActionName: " + ActionName);
 
-        String ActionClassName = this.getInitParameter(ActionName);
-        Action action = ActionFactory.getAction(ActionClassName);
+        Action action = ActionFactory.getAction(ActionName);
 
         if (action == null) {
-            //TODO
+            System.out.println("Action is NULL.");
             return;
         }
 
-        String url = action.execute(request, response);
-        request.getRequestDispatcher(url).forward(request, response);
+        try {
+            String url = action.execute(request, response);
+            System.out.println("URL: " + url);
+            //request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            response.sendRedirect("error.html");
+        }
     }
 }
