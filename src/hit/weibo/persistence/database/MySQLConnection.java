@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
+import com.mysql.jdbc.Driver;
 
 /**
  * Created by ITX351 on 2016/10/12.
@@ -53,7 +54,7 @@ public class MySQLConnection {
         try{
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            statement.close();
+            //statement.close();
             return resultSet;
         }
         catch(SQLException e){
