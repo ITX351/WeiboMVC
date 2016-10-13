@@ -12,8 +12,10 @@
 </head>
 <body>
 
-<form action="submit.jsp" method="post">
-    <input type="text" name="content"/>
+<form action="Publish.action" method="post">
+    <br/>
+    <textarea rows="3" cols="56" name="content"></textarea>
+    <br/>
     <input type="submit" value="submit"/>
 </form>
 
