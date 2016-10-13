@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-10-11 23:17:46
+Date: 2016-10-13 20:50:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,6 +24,7 @@ CREATE TABLE `comment` (
   `commenter` int(11) NOT NULL,
   `weibo_id` int(11) NOT NULL,
   `content` varchar(255) NOT NULL,
+  `createAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `commenter` (`commenter`),
   KEY `weibo_id` (`weibo_id`),
@@ -53,7 +54,7 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for weibo

@@ -23,7 +23,6 @@ proguard/
 
 #IntelliJ Idea
 .idea/
-*.iml
 
 ####################
 
