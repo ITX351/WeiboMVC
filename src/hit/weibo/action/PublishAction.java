@@ -18,7 +18,7 @@ public class PublishAction implements Action {
         LoginStatus loginStatus = (LoginStatus) session.getAttribute("loginStatus");
         if (loginStatus != null) {
             WeiboRepository.insertWeibo(loginStatus.getUser_id(), content);
-            return "weibo.jsp";
+            return "main.jsp";
         }
 //        WeiboRepository.insertWeibo(1, content);
         return "error.html";
