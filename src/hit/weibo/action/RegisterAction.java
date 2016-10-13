@@ -11,25 +11,23 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by ITX351 on 2016/10/11.
+ * Created by ITX351 on 2016/10/13.
  */
-public class LoginAction implements Action {
+public class RegisterAction implements Action {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
 
-        int user_id = 1;
-
-        List<UserEntity> userEntities = UserRepository.findByNameAndPassword(username, password);
+        List<UserEntity> userEntities = UserRepository.findByName(username);
         if (userEntities.size() > 0) {
-            session.setAttribute("loginStatus", new LoginStatus(true, username, user_id));
-            return "main.jsp";
+            session.setAttribute("registerInformation", "User with this name has existed.");
+            return "register.jsp";
         }
 
-        session.setAttribute("loginInformation", "Authentication failed.");
-        session.setAttribute("loginStatus", null);
+        UserRepository.InsertWithNameAndPassword(username, password);
+        session.setAttribute("indexInformation", "Register finished. Please log in with " + username);
         return "index.jsp";
     }
 }

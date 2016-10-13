@@ -7,6 +7,8 @@ public class ActionFactory {
     public static Action getAction(String actionName) {
         if ("AdminLogin".equals(actionName)) {
             return new LoginAction();
+        } else if ("Register".equals(actionName)) {
+            return new RegisterAction();
         }
         return null;
     }

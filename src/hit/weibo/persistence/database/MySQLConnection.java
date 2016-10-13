@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
-import com.mysql.jdbc.Driver;
 
 /**
  * Created by ITX351 on 2016/10/12.
