@@ -50,6 +50,7 @@ public class MySQLConnection {
     }
 
     public static ResultSet Query(String sql){
+        System.out.println("Query sql: " + sql);
         try{
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -62,6 +63,7 @@ public class MySQLConnection {
         return null;
     }
     public static void ExecuteSQL(String sql){
+        System.out.println("Execute sql: " + sql);
         try{
             Statement statement = conn.createStatement();
             statement.executeUpdate(sql);

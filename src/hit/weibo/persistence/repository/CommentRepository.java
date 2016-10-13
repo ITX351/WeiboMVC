@@ -32,7 +32,8 @@ public class CommentRepository {
     public static List<CommentEntity> findByWeiboId(int weibo_id) throws SQLException {
         String sql = "select `comment`.`id`, `comment`.`commenter`, `user`.`name` commenterName, `comment`.`weibo_id`, " +
                 " `comment`.`content`, `comment`.`createAt` from `comment` join `user` on " +
-                "`comment`.`commenter` = `user`.`id` where `comment`.`weibo_id` = " + Helper.toString(weibo_id);
+                "`comment`.`commenter` = `user`.`id` where `comment`.`weibo_id` = " + Helper.toString(weibo_id) +
+                " order by `comment`.`createAt` asc";
         return ResultSetToList(MySQLConnection.Query(sql));
     }
 }
