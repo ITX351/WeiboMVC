@@ -25,7 +25,17 @@ public class UserRepository {
     }
 
     public static List<UserEntity> findByNameAndPassword(String name, String password) throws SQLException {
-        String sql = "select * from `User` where `name` = '" + name + "' and `password` = '" + password + "'";
+        String sql = "select * from `user` where `name` = '" + name + "' and `password` = '" + password + "'";
         return ResultSetToList(MySQLConnection.Query(sql));
+    }
+
+    public static List<UserEntity> findByName(String name) throws SQLException {
+        String sql = "select * from `user` where `name` = '" + name + "'";
+        return ResultSetToList(MySQLConnection.Query(sql));
+    }
+
+    public static void InsertWithNameAndPassword(String name, String password) throws SQLException {
+        String sql = "insert into `user`(`name`, `password`) values('" + name + "', '" + password + "')";
+        MySQLConnection.ExecuteSQL(sql);
     }
 }
