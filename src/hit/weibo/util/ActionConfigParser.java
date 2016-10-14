@@ -17,15 +17,10 @@ public class ActionConfigParser {
     static DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
     static HashMap<String, String> sActionNameToClassMap = new HashMap<>();
 
-    static {
-        initMap();
-    }
-
     static Document parse(String filePath) {
         Document document = null;
         try {
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
-
             document = builder.parse(new File(filePath));
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -37,9 +32,9 @@ public class ActionConfigParser {
         return document;
     }
 
-    static void initMap() {
+    public static void initMap(String xmlPath) {
         ActionConfigParser actionConfigParser = new ActionConfigParser();
-        Document doc = actionConfigParser.parse("resources\\action-config.xml");
+        Document doc = actionConfigParser.parse(xmlPath);
         Element documentElement = doc.getDocumentElement();
         NodeList actions = documentElement.getElementsByTagName("action");
 
@@ -55,7 +50,7 @@ public class ActionConfigParser {
     public static Action newAction(String actionName) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         String actionClassName = sActionNameToClassMap.get(actionName);
         if (actionClassName == null) {
-            throw new NullPointerException("action not found");
+            throw new IllegalArgumentException("action not found");
         }
         Class<?> actionClass = Class.forName(actionClassName);
         Action newAction = (Action) actionClass.newInstance();
