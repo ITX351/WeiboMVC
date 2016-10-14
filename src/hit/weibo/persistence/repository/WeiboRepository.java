@@ -6,7 +6,9 @@ import hit.weibo.persistence.entity.WeiboEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,8 +32,17 @@ public class WeiboRepository {
 
     public static List<WeiboEntity> showAll() throws SQLException {
         String sql = "select `weibo`.`id`, `weibo`.`creator`, `user`.`name` creatorName, `weibo`.`content`, " +
-                "`weibo`.`createAt` from `weibo` join `user` on `weibo`.`creator` = `user`.`id` " +
-                "order by `weibo`.`createAt` desc";
+                "`weibo`.`createAt` from `weibo` join `user` on `weibo`.`creator` = `user`.`id`";
         return ResultSetToList(MySQLConnection.Query(sql));
+    }
+
+    public static void insertWeibo(int creator, String content) {
+        SimpleDateFormat time= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String curDateTime = time.format(new Date());
+        System.out.println("curDate = " + curDateTime);
+        String sql = String.format("insert into `weibo`(`id`, `creator`, `content`, `createAt`) " +
+                "values(NULL, %d, '%s', '%s')", creator, content, curDateTime);
+        System.out.println("sql = " + sql);
+        MySQLConnection.ExecuteSQL(sql);
     }
 }

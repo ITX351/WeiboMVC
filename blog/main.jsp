@@ -18,6 +18,7 @@
     <title>Weibo Main</title>
 </head>
 <body>
+
     <%
     LoginStatus loginStatus = (LoginStatus)session.getAttribute("loginStatus");
     if (LoginStatus.isLogged(loginStatus)) { %>
@@ -34,6 +35,12 @@
             e.printStackTrace();
         }
     %>
+    <form action="Publish.action" method="post">
+        <br/>
+        <textarea rows="3" cols="56" name="content"></textarea>
+        <br/>
+        <input type="submit" value="submit"/>
+    </form>
 
     <table border="1">
         <tr>

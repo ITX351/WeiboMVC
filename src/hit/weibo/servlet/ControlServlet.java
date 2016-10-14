@@ -5,7 +5,9 @@ package hit.weibo.servlet;
  */
 import hit.weibo.action.Action;
 import hit.weibo.action.ActionFactory;
+import hit.weibo.util.ActionConfigParser;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ControlServlet extends HttpServlet {
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ServletContext context = getServletContext();
+        String fullPath = context.getRealPath("/WEB-INF/action-config.xml");
+        ActionConfigParser.initMap(fullPath);
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
