@@ -3,6 +3,7 @@ package hit.weibo.persistence.repository;
 import hit.weibo.persistence.database.MySQLConnection;
 import hit.weibo.persistence.entity.UserEntity;
 import hit.weibo.persistence.entity.WeiboEntity;
+import hit.weibo.util.Helper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,6 +45,11 @@ public class WeiboRepository {
         String sql = String.format("insert into `weibo`(`id`, `creator`, `content`, `createAt`) " +
                 "values(NULL, %d, '%s', '%s')", creator, content, curDateTime);
         System.out.println("sql = " + sql);
+        MySQLConnection.ExecuteSQL(sql);
+    }
+
+    public static void deleteWeibo(int weibo_id) {
+        String sql = "delete from `weibo` where `weibo`.`id` = " + Helper.toString(weibo_id);
         MySQLConnection.ExecuteSQL(sql);
     }
 }

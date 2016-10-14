@@ -5,7 +5,8 @@
 <%@ page import="hit.weibo.persistence.entity.WeiboEntity" %>
 <%@ page import="java.util.List" %>
 <%@ page import="hit.weibo.persistence.repository.WeiboRepository" %>
-<%@ page import="hit.weibo.persistence.entity.CommentEntity" %><%--
+<%@ page import="hit.weibo.persistence.entity.CommentEntity" %>
+<%@ page import="java.util.Objects" %><%--
   Created by IntelliJ IDEA.
   User: ITX351
   Date: 2016/10/12
@@ -35,7 +36,7 @@
             e.printStackTrace();
         }
     %>
-    <form action="/blog/Publish.action" method="post">
+    <form action="/blog/PublishWeibo.action" method="post">
         <br/>
         <textarea rows="3" cols="56" name="content"></textarea>
         <br/>
@@ -47,6 +48,7 @@
             <th>Content</th>
             <th>DateTime</th>
             <th>Publisher</th>
+            <th></th>
             <th></th>
         </tr>
 
@@ -72,9 +74,17 @@
                     out.println(show);
                 %>
             </td>
+            <td>
+                <% if (Objects.equals(weibo.getCreator(), loginStatus.getUser_id())) { %>
+                    <form action="/blog/DeleteWeibo.action" method="post">
+                        <input type="hidden" name="weibo_id" value="<%=weibo.getId()%>"/>
+                        <input type="submit" value="Delete"/>
+                    </form>
+                <% } %>
+            </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="5">
                 <table>
                     <% for (CommentEntity comment : weibo.getComments()) { %>
                     <tr>

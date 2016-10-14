@@ -10,7 +10,11 @@
         <class>hit.weibo.action.RegisterAction</class>
     </action>
     <action>
-        <name>Publish</name>
-        <class>hit.weibo.action.PublishAction</class>
+        <name>PublishWeibo</name>
+        <class>hit.weibo.action.PublishWeiboAction</class>
+    </action>
+    <action>
+        <name>DeleteWeibo</name>
+        <class>hit.weibo.action.DeleteWeiboAction</class>
     </action>
 </action-config>

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
-public class PublishAction implements Action {
+public class PublishWeiboAction implements Action {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         // insert into

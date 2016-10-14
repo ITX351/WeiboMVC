@@ -1,0 +1,25 @@
+package hit.weibo.action;
+
+import hit.weibo.persistence.repository.CommentRepository;
+import hit.weibo.persistence.repository.WeiboRepository;
+import hit.weibo.util.LoginStatus;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
+
+/**
+ * Created by ITX351 on 2016/10/14.
+ */
+public class DeleteWeiboAction implements Action {
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        Integer weibo_id = Integer.parseInt(request.getParameter("weibo_id"));
+
+        CommentRepository.deleteByWeiboId(weibo_id);
+        WeiboRepository.deleteWeibo(weibo_id);
+
+        return "main.jsp";
+    }
+}
