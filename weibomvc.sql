@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-10-13 20:50:31
+Date: 2016-10-14 15:50:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `commenter` int(11) NOT NULL,
   `weibo_id` int(11) NOT NULL,
   `content` varchar(255) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `comment` (
   KEY `weibo_id` (`weibo_id`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`commenter`) REFERENCES `user` (`id`),
   CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`weibo_id`) REFERENCES `weibo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for follow
@@ -61,11 +61,11 @@ CREATE TABLE `user` (
 -- ----------------------------
 DROP TABLE IF EXISTS `weibo`;
 CREATE TABLE `weibo` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `creator` int(11) NOT NULL,
   `content` varchar(255) NOT NULL,
   `createAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `creator` (`creator`),
   CONSTRAINT `weibo_ibfk_1` FOREIGN KEY (`creator`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
