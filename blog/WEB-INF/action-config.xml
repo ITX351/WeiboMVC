@@ -25,4 +25,8 @@
         <name>DeleteComment</name>
         <class>hit.weibo.action.DeleteCommentAction</class>
     </action>
+    <action>
+        <name>ChangeFollow</name>
+        <class>hit.weibo.action.ChangeFollowAction</class>
+    </action>
 </action-config>

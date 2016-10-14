@@ -60,20 +60,26 @@
             <td><%=weibo.getCreatorName()%></td>
             <td>
                 <%
-                    boolean followFrom = follower.contains(weibo.getCreator()),
-                            followTo = following.contains(weibo.getCreator());
-                    String show;
-                    if (!followFrom && !followTo) {
-                        show = "Follow";
-                    } else if (!followFrom && followTo) {
-                        show = "Unfollow";
-                    } else if (followFrom && !followTo) {
-                        show = "-> Follow";
-                    } else {
-                        show = "<-> Unfollow";
-                    }
-                    out.println(show);
+                    if (!Objects.equals(weibo.getCreator(), loginStatus.getUser_id())) {
+                        boolean followFrom = follower.contains(weibo.getCreator()),
+                                followTo = following.contains(weibo.getCreator());
+                        String show;
+                        if (!followFrom && !followTo) {
+                            show = "Follow";
+                        } else if (!followFrom && followTo) {
+                            show = "Unfollow";
+                        } else if (followFrom && !followTo) {
+                            show = "-> Follow";
+                        } else {
+                            show = "<-> Unfollow";
+                        }
                 %>
+                    <form action="/blog/ChangeFollow.action" method="post">
+                        <input type="hidden" name="from" value="<%=loginStatus.getUser_id()%>"/>
+                        <input type="hidden" name="to" value="<%=weibo.getCreator()%>"/>
+                        <input type="submit" value="<%=show%>"/>
+                    </form>
+                <% }%>
             </td>
             <td>
                 <% if (Objects.equals(weibo.getCreator(), loginStatus.getUser_id())) { %>
