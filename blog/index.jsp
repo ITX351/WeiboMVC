@@ -15,13 +15,13 @@
       out.print(Helper.toString(session.getAttribute("indexInformation")));
       session.setAttribute("indexInformation", null);
     %>
-    <form action="/AdminLogin.action" method="post">
+    <form action="/blog/AdminLogin.action" method="post">
         Username: <input type="text" name="username"/><br/>
         Password: <input type="password" name="password"/><br/>
         <input type="submit" name="login" value="Login"/>
     </form>
     <p>
-        <a href="/register.jsp">Register</a>
+        <a href="/blog/register.jsp">Register</a>
     </p>
   </body>
 </html>
