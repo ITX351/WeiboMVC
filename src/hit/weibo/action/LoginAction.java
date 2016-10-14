@@ -20,11 +20,9 @@ public class LoginAction implements Action {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
 
-        int user_id = 1;
-
         List<UserEntity> userEntities = UserRepository.findByNameAndPassword(username, password);
         if (userEntities.size() > 0) {
-            session.setAttribute("loginStatus", new LoginStatus(true, username, user_id));
+            session.setAttribute("loginStatus", new LoginStatus(true, username, userEntities.get(0).getId()));
             return "main.jsp";
         }
 

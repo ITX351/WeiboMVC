@@ -21,7 +21,7 @@
         <input type="submit" name="login" value="Login"/>
     </form>
     <p>
-        <a href="/blog/register.jsp">Register</a>
+        <a href="/register.jsp">Register</a>
     </p>
   </body>
 </html>

@@ -17,4 +17,12 @@
         <name>DeleteWeibo</name>
         <class>hit.weibo.action.DeleteWeiboAction</class>
     </action>
+    <action>
+        <name>PublishComment</name>
+        <class>hit.weibo.action.PublishCommentAction</class>
+    </action>
+    <action>
+        <name>DeleteComment</name>
+        <class>hit.weibo.action.DeleteCommentAction</class>
+    </action>
 </action-config>

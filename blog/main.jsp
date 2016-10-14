@@ -24,6 +24,7 @@
     LoginStatus loginStatus = (LoginStatus)session.getAttribute("loginStatus");
     if (LoginStatus.isLogged(loginStatus)) { %>
         Welcome, <%= loginStatus.getUsername() %>
+        <a href="/logout.jsp">Log out</a>
 
     <%
         HashSet<Integer> follower = null, following = null;
@@ -48,8 +49,8 @@
             <th>Content</th>
             <th>DateTime</th>
             <th>Publisher</th>
-            <th></th>
-            <th></th>
+            <th> </th>
+            <th> </th>
         </tr>
 
         <% for (WeiboEntity weibo : weibos) { %>
@@ -91,8 +92,25 @@
                         <td><%=comment.getContent()%></td>
                         <td><%=comment.getCreateAt()%></td>
                         <td><%=comment.getCommenterName()%></td>
+                        <td>
+                            <% if (Objects.equals(comment.getCommenter(), loginStatus.getUser_id())) { %>
+                                <form action="/blog/DeleteComment.action" method="post">
+                                    <input type="hidden" name="comment_id" value="<%=comment.getId()%>"/>
+                                    <input type="submit" value="Delete"/>
+                                </form>
+                            <% } %>
+                        </td>
                     </tr>
                     <% } %>
+                    <tr>
+                        <td rowspan="4">
+                            <form action="/blog/PublishComment.action" method="post">
+                                <input type="hidden" name="weibo_id" value="<%=weibo.getId()%>"/>
+                                <input type="text" name="content" value="" />
+                                <input type="submit" value="comment"/>
+                            </form>
+                        </td>
+                    </tr>
                 </table>
             </td>
         </tr>

@@ -39,12 +39,8 @@ public class WeiboRepository {
     }
 
     public static void insertWeibo(int creator, String content) {
-        SimpleDateFormat time= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String curDateTime = time.format(new Date());
-        System.out.println("curDate = " + curDateTime);
         String sql = String.format("insert into `weibo`(`id`, `creator`, `content`, `createAt`) " +
-                "values(NULL, %d, '%s', '%s')", creator, content, curDateTime);
-        System.out.println("sql = " + sql);
+                "values(NULL, %d, '%s', '%s')", creator, content, Helper.getCurDateTime());
         MySQLConnection.ExecuteSQL(sql);
     }
 

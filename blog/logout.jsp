@@ -13,5 +13,6 @@
 <body>
     <% session.setAttribute("loginStatus", null); %>
     You have logged out.
+    <a href="/index.jsp">Log in</a>
 </body>
 </html>

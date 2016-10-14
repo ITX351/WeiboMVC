@@ -7,7 +7,9 @@ import hit.weibo.util.Helper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +41,17 @@ public class CommentRepository {
 
     public static void deleteByWeiboId(int weibo_id) throws SQLException {
         String sql = "delete from `comment` where `weibo_id` = " + Helper.toString(weibo_id);
+        MySQLConnection.ExecuteSQL(sql);
+    }
+
+    public static void insertComment(int commenter, String content, int weibo_id) {
+        String sql = String.format("insert into `comment`(`commenter`, `weibo_id`, `content`, `createAt`) " +
+                "values(%d, %d, '%s', '%s')", commenter, weibo_id, content, Helper.getCurDateTime());
+        MySQLConnection.ExecuteSQL(sql);
+    }
+
+    public static void deleteComment(int comment_id) {
+        String sql = "delete from `comment` where `comment`.`id` = " + Helper.toString(comment_id);
         MySQLConnection.ExecuteSQL(sql);
     }
 }
