@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-
-<action-config>
+<action-config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="Namespace"
+    xsi:schemaLocation="http://www.w3school.com.cn action-config.xsd"
+>
     <action>
         <name>AdminLogin</name>
         <class>hit.weibo.action.LoginAction</class>
