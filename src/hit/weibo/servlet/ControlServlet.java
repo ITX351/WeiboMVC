@@ -38,6 +38,9 @@ public class ControlServlet extends HttpServlet {
 
         int index = pathName.indexOf(".");
         String ActionName = pathName.substring(1, index);
+        while (ActionName.contains("/")) {
+            ActionName = ActionName.substring(ActionName.indexOf("/") + 1);
+        }
         System.out.println("ActionName: " + ActionName);
 
         Action action = ActionFactory.getAction(ActionName);
@@ -48,13 +51,13 @@ public class ControlServlet extends HttpServlet {
         }
 
         try {
-            String url = action.execute(request, response);
+            String url = "/" + action.execute(request, response);
             System.out.println("URL: " + url);
             //request.getRequestDispatcher(url).forward(request, response);
             response.sendRedirect(url);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect("error.html");
+            response.sendRedirect("/error.html");
         }
     }
 }

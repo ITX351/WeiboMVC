@@ -31,8 +31,9 @@ public class WeiboRepository {
     }
 
     public static List<WeiboEntity> showAll() throws SQLException {
-        String sql = "select `weibo`.`id`, `weibo`.`creator`, `user`.`name` creatorName, `weibo`.`content`, " +
-                "`weibo`.`createAt` from `weibo` join `user` on `weibo`.`creator` = `user`.`id`";
+        String sql = "select `weibo`.`id`, `weibo`.`creator`, `user`.`name` creatorName, `weibo`.`content`," +
+                " `weibo`.`createAt` from `weibo` join `user` on `weibo`.`creator` = `user`.`id`" +
+                " order by `weibo`.`createAt` desc";
         return ResultSetToList(MySQLConnection.Query(sql));
     }
 

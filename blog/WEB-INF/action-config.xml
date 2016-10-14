@@ -9,4 +9,8 @@
         <name>Register</name>
         <class>hit.weibo.action.RegisterAction</class>
     </action>
+    <action>
+        <name>Publish</name>
+        <class>hit.weibo.action.PublishAction</class>
+    </action>
 </action-config>

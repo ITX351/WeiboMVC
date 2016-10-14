@@ -35,7 +35,7 @@
             e.printStackTrace();
         }
     %>
-    <form action="Publish.action" method="post">
+    <form action="/blog/Publish.action" method="post">
         <br/>
         <textarea rows="3" cols="56" name="content"></textarea>
         <br/>
