@@ -1,4 +1,4 @@
 driverClass = com.mysql.jdbc.Driver
-url = jdbc:mysql://localhost:3306/WeiboMVC
+url = jdbc:mysql://localhost:3306/WeiboCobar1
 username = root
-password = goodhigh
+password = 

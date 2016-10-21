@@ -45,7 +45,8 @@ public class UserRepository {
     }
 
     public static void InsertWithNameAndPassword(String name, String password) throws SQLException {
-        String sql = "insert into `user`(`name`, `password`) values('" + name + "', '" + password + "')";
+        String sql = String.format("insert into `user`(`id`, `name`, `password`) values(%d, '" + name +
+                "', '" + password + "')", Helper.getRandInt());
         MySQLConnection.ExecuteSQL(sql);
     }
 

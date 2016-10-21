@@ -40,7 +40,7 @@ public class WeiboRepository {
 
     public static void insertWeibo(int creator, String content) {
         String sql = String.format("insert into `weibo`(`id`, `creator`, `content`, `createAt`) " +
-                "values(NULL, %d, '%s', '%s')", creator, content, Helper.getCurDateTime());
+                "values(%d, %d, '%s', '%s')", Helper.getRandInt(), creator, content, Helper.getCurDateTime());
         MySQLConnection.ExecuteSQL(sql);
     }
 

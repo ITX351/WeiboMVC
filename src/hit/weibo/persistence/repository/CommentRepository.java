@@ -45,8 +45,8 @@ public class CommentRepository {
     }
 
     public static void insertComment(int commenter, String content, int weibo_id) {
-        String sql = String.format("insert into `comment`(`commenter`, `weibo_id`, `content`, `createAt`) " +
-                "values(%d, %d, '%s', '%s')", commenter, weibo_id, content, Helper.getCurDateTime());
+        String sql = String.format("insert into `comment`(`id`, `commenter`, `weibo_id`, `content`, `createAt`) " +
+                "values(%d, %d, %d, '%s', '%s')", Helper.getRandInt(), commenter, weibo_id, content, Helper.getCurDateTime());
         MySQLConnection.ExecuteSQL(sql);
     }
 
