@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="Namespace"
+           xmlns="Namespace"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+    <xs:element name="action-config">
+        <xs:complexType>
+            <xs:element name="action">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="class" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
